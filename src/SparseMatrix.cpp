@@ -126,27 +126,27 @@ bool SparseMatrix::hasConsecutiveOnesProperty() {
 	//Check for chordality (note: it will cost us more than linear time since we need the adjacency matrix, even with the sigma[] sequence acquired above)
 	//====================================================================================================================================================
 	//find the edges of the graph out of the cliques
-	vector<Edge> edges;
-	for (unsigned int i=0; i<numofCliques; ++i) {
-		for (unsigned v=0; v<sparseCliques[i].getVertices().size(); ++v) {
-			for (unsigned u=v+1; u<sparseCliques[i].getVertices().size(); ++u) {
-				Edge e = Edge(sparseCliques[i].getVertices()[v], sparseCliques[i].getVertices()[u]);
-				edges.push_back(e);
-			}
-		}
-	}
-	
-	//build the graph representing the matrix M~ and call its isChordal() method
-	Graph G(numofVertices, edges.size());
-	for (unsigned int i = 0; i<edges.size(); ++i) {
-		G.insertEdge(edges[i].u, edges[i].v);
-	}
-	
-	if (!G.isChordal()) {	//check for chordality
-		printf("Not a chordal graph!\n");
-		rollbackOriginalMatrix();		//roll-back to the original matrix before returning from function
-		return false;	//the matrix failed to pass the test for Consecutive-Ones!
-	}
+//	vector<Edge> edges;
+//	for (unsigned int i=0; i<numofCliques; ++i) {
+//		for (unsigned v=0; v<sparseCliques[i].getVertices().size(); ++v) {
+//			for (unsigned u=v+1; u<sparseCliques[i].getVertices().size(); ++u) {
+//				Edge e = Edge(sparseCliques[i].getVertices()[v], sparseCliques[i].getVertices()[u]);
+//				edges.push_back(e);
+//			}
+//		}
+//	}
+//	
+//	//build the graph representing the matrix M~ and call its isChordal() method
+//	Graph G(numofVertices, edges.size());
+//	for (unsigned int i = 0; i<edges.size(); ++i) {
+//		G.insertEdge(edges[i].u, edges[i].v);
+//	}
+//	
+//	if (!G.isChordal()) {	//check for chordality
+//		printf("Not a chordal graph!\n");
+//		rollbackOriginalMatrix();		//roll-back to the original matrix before returning from function
+//		return false;	//the matrix failed to pass the test for Consecutive-Ones!
+//	}
 	
 
 	//2. Continue as in algorithm 8
