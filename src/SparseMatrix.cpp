@@ -332,6 +332,13 @@ bool SparseMatrix::hasConsecutiveOnesProperty() {
 		
 	}	//end of the while() loop, algorithm 8
 	
+	//print out the final sequence of the matrix columns
+	printf("The reordered columns sequence: ");
+	for (unsigned int i=0; i<L.size(); ++i) {
+		printf(" %d", L[i][0]->id);
+	}
+	printf("\n");
+	
 	rollbackOriginalMatrix();		//roll-back to the original matrix before returning from function
 	return true;	//the matrix has passed the test for Consecutive-Ones!
 }

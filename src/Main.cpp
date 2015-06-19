@@ -81,7 +81,7 @@ void matrixTest4() {
 		  0, 1, 1, 1
   };
 
-  SparseMatrix M(binaryMatrix, 4, 3);
+  SparseMatrix M(binaryMatrix, 3, 4);
 
   printf("Original matrix M:\n");
   M.printMatrix();
@@ -93,6 +93,31 @@ void matrixTest4() {
     printf("The matrix does NOT have Consecutive-Ones property!\n");
   }
 }
+
+void matrixTest4_withNonDuplicateColumns() {
+  bool binaryMatrix[28] = {
+		  1, 0, 1, 0,
+		  1, 1, 0, 1,
+		  0, 1, 1, 1,
+		  1, 0, 0, 0,
+		  0, 1, 0, 0,
+		  0, 0, 1, 0,
+		  0, 0, 0, 1
+  };
+
+  SparseMatrix M(binaryMatrix, 7, 4);
+
+  printf("Original matrix M:\n");
+  M.printMatrix();
+
+  if (M.hasConsecutiveOnesProperty()) {
+    printf("The matrix has Consecutive-Ones property!\n");
+  }
+  else {
+    printf("The matrix does NOT have Consecutive-Ones property!\n");
+  }
+}
+
 void matrixTest5() {
   bool binaryMatrix[48] = {
 		  0, 0, 0, 0, 1, 0,
@@ -122,7 +147,7 @@ int main(int argc, char* argv[]) {
 
 //	chordalityTest();
 
-  matrixTest4();
+	matrixTest4_withNonDuplicateColumns();
 
   return 0;
 }
